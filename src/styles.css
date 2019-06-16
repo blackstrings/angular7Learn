@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: grey !important;
+}
+
+/* spacing styles */
+.padding-sm{padding:2px}
+.padding-md{padding:4px}
+.padding-lg{padding:6px}
+.padding-xl{padding:8px}
+
+.paddingL-sm{padding-left:2px}
+.paddingL-md{padding-left:4px}
+.paddingL-lg{padding-left:6px}
+.paddingL-xl{padding-left:8px}
+
+.paddingR-sm{padding-right:2px}
+.paddingR-md{padding-right:4px}
+.paddingR-lg{padding-right:6px}
+.paddingR-xl{padding-right:8px}
+
+.margin-sm{margin:2px}
+.margin-md{margin:4px}
+.margin-lg{margin:6px}
+.margin-xl{margin:8px}
+
+.marginR-sm{margin-right:2px}
+.marginR-md{margin-right:4px}
+.marginR-lg{margin-right:6px}
+.marginR-xl{margin-right:8px}
+
+.marginL-sm{margin-left:2px}
+.marginL-md{margin-left:4px}
+.marginL-lg{margin-left:6px}
+.marginL-xl{margin-left:8px}
+
+/* alignment */
+.alignL{text-align:left}
+.alignR{text-align:right}
+.alignC{text-align:center}
+
+/* font size */
+.fs-xs{font-size:6px !important}
+.fs-sm{font-size:8px !important}
+.fs-md{font-size:10px !important}
+.fs-lg{font-size:12px !important}
+.fs-xl{font-size:16px !important}
+
+/* colors */
+.red{color: red}
+.blue{color: blue}
+.white{color: white}

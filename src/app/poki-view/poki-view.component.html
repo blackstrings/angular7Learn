@@ -1,0 +1,25 @@
+<!-- rename selectedPoki to poki for local usage here -->
+<div class="row" *ngIf="selectedPoki; let poki">
+    <div class="col-12">
+        <div *ngIf="poki != null; then pokiTemplate else noPokiTemplate"></div>
+    </div>
+
+    <ng-template #pokiTemplate>
+
+        <div class="alignC">
+            <div><i class="fas fa-5x white" [ngClass]="poki.avatar"></i></div>
+            <h1>{{poki.name}}</h1>
+        </div>
+
+        <div><span class="title">ID |</span>{{poki.id}}</div>
+        <div><span class="title">HP |</span>{{poki.hp}}</div>
+        <div><span class="title">ATK |</span>{{poki.atk}}</div>
+        <div><span class="title">DEF |</span>{{poki.def}}</div>
+        <div><span class="title">LVL |</span>{{poki.lvl}}</div>
+        <div><span class="title">TYPE |</span>{{poki.type.toString()}}</div>
+    </ng-template>
+
+    <ng-template #noPokiTemplate>
+        <h1>No poki</h1>
+    </ng-template>
+</div>
