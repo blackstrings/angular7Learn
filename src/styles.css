@@ -12,6 +12,7 @@ body {
 .footer {
     grid-row-start: 2;
     grid-row-end: 3;
+    margin-top: 12px;
 }
 
 /* spacing styles */
