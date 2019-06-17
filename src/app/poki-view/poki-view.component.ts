@@ -21,6 +21,7 @@ export class PokiViewComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log('<< PokiView >> init');
         this.pokiService.setActive();
     }
 

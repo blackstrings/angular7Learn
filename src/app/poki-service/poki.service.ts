@@ -79,6 +79,10 @@ export class PokiService {
         }
     }
 
+    public getAllPoki(): Poki[] {
+        return this.pokiData;
+    }
+
     /** publishes the active poki to all listeners */
     public setActive(): void {
         this.activePoki = this.pokiData[this.indexCounter];
