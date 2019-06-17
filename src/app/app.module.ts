@@ -5,12 +5,14 @@ import {AppComponent} from './app.component';
 import {MyNavComponent} from './my-nav/my-nav.component';
 import {PokiViewComponent} from './poki-view/poki-view.component';
 import {AppRoutingModule} from './app-routing.module';
+import { FooterMainComponent } from './footer-main/footer-main.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MyNavComponent,
-        PokiViewComponent
+        PokiViewComponent,
+        FooterMainComponent
     ],
     imports: [
         BrowserModule,
