@@ -1,5 +1,5 @@
-<!-- rename selectedPoki to poki for local usage here -->
-<div class="row" *ngIf="selectedPoki; let poki">
+<!-- create an alias for selectedPoki to poki for local usage here -->
+<div id="pokiViewContainer" class="row" *ngIf="selectedPoki; let poki">
     <div class="col-12">
         <div *ngIf="poki != null; then pokiTemplate else noPokiTemplate"></div>
     </div>
@@ -7,7 +7,7 @@
     <ng-template #pokiTemplate>
 
         <div class="alignC">
-            <div><i class="fas fa-5x white" [ngClass]="poki.avatar"></i></div>
+            <div><i class="fas fa-5x" [ngClass]="poki.avatar"></i></div>
             <h1>{{poki.name}}</h1>
         </div>
 

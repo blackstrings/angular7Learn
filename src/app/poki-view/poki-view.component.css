@@ -3,7 +3,10 @@ span.title{
     margin-right: 4px;
 }
 h1{
-    background-color: #15232a;
-    color: white;
+    /* background-color: #15232a; */
+    color: #939096;
     margin-top: 4px;
+}
+#pokiViewContainer{
+    color: grey;
 }

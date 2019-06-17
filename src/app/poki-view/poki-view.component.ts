@@ -10,7 +10,7 @@ import {PokiService} from '../poki-service/poki.service';
 export class PokiViewComponent implements OnInit {
 
     // contains the selected poki the view will read from
-    private selectedPoki: Poki;
+    public selectedPoki: Poki;
 
     constructor(private pokiService: PokiService) {
 

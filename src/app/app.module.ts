@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {MyNavComponent} from './my-nav/my-nav.component';
 import {PokiViewComponent} from './poki-view/poki-view.component';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import {PokiViewComponent} from './poki-view/poki-view.component';
         PokiViewComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]
