@@ -1,5 +1,6 @@
 <!-- create an alias for selectedPoki to poki for local usage here -->
 <app-my-nav></app-my-nav>
+<app-poki-search></app-poki-search>
 <div id="pokiViewContainer" class="row" *ngIf="selectedPoki; let poki">
     <div class="col-12">
         <div *ngIf="poki != null; then pokiTemplate else noPokiTemplate"></div>

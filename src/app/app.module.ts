@@ -9,6 +9,7 @@ import { FooterMainComponent } from './footer-main/footer-main.component';
 import { NavMainComponent } from './nav-main/nav-main.component';
 import { HeaderMainComponent } from './header-main/header-main.component';
 import { PokiListViewComponent } from './poki-list-view/poki-list-view.component';
+import { PokiSearchComponent } from './poki-search/poki-search.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { PokiListViewComponent } from './poki-list-view/poki-list-view.component
         FooterMainComponent,
         NavMainComponent,
         HeaderMainComponent,
-        PokiListViewComponent
+        PokiListViewComponent,
+        PokiSearchComponent
     ],
     imports: [
         BrowserModule,

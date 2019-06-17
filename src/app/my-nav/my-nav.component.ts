@@ -1,22 +1,37 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Poki} from '../apis/Poki';
-import {PokiType} from '../apis/PokiType';
 import {PokiService} from '../poki-service/poki.service';
+import {take, takeUntil} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
 
 @Component({
     selector: 'app-my-nav',
     templateUrl: './my-nav.component.html',
     styleUrls: ['./my-nav.component.css']
 })
-export class MyNavComponent {
+export class MyNavComponent implements OnInit, OnDestroy {
 
-    // angulars way of accessing a dom elements in the view marked with the '#' symbol
-    @ViewChild('textInput') input: ElementRef;
+    // needed to unsubscribe from all subscriptions on destroy
+    private _unSubscriberEvents: Subject<boolean> = new Subject();
+    private unSubscriberEvents: Observable<boolean> = this._unSubscriberEvents.asObservable();
 
     constructor(private pokiService: PokiService) {
-        this.pokiService.pokiSelected.subscribe((poki: Poki) => {
-            this.updateTextInput(poki);
-        });
+
+    }
+
+    ngOnInit(): void {
+        // if you subscribe, you need to unsubscribe when component destroys to prevent memory leak
+        // this.pokiService.pokiSelected
+        //     .pipe(takeUntil(this.unSubscriberEvents))
+        //     .subscribe((poki: Poki) => {
+        //     this.updateTextInput(poki);
+        // });
+    }
+
+    ngOnDestroy(): void {
+        console.log('<< my-nav >> unsub');
+        this._unSubscriberEvents.next(true);
+        this._unSubscriberEvents.complete();
     }
 
     back(): void {
@@ -25,19 +40,6 @@ export class MyNavComponent {
 
     next(): void {
         this.pokiService.next();
-    }
-
-    searchById(id: string): void {
-        this.pokiService.searchById(id);
-    }
-
-    updateTextInput(poki: Poki): void {
-        if (poki) {
-            // new way to access the element with angular
-            this.input.nativeElement.value = poki.id.toString();
-            // old way
-            // (document.getElementById('textInputId') as HTMLInputElement).value = poki.id.toString();
-        }
     }
 
 }

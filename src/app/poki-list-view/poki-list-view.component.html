@@ -1,6 +1,8 @@
 <div>
     <h1>Poki List View</h1>
-    <div *ngFor="let poki of pokiListAll">
-        {{poki.name}}
-    </div>
+    <ol>
+        <li *ngFor="let poki of pokiListAll">
+            {{poki.name}}
+        </li>
+    </ol>
 </div>
