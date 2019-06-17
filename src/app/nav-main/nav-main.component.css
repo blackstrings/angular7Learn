@@ -1,0 +1,8 @@
+div#nav {
+    text-align: right;
+}
+div#nav div{
+    display: inline-block;
+    padding: 6px;
+    color: antiquewhite;
+}
