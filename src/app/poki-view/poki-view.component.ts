@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Poki} from '../apis/Poki';
 import {PokiService} from '../poki-service/poki.service';
-import {take, takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {Observable, ReplaySubject, Subject, Subscription} from 'rxjs';
 
 @Component({
@@ -32,8 +32,6 @@ export class PokiViewComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        // this._unSubscriberEvents.next(true);
-        // this._unSubscriberEvents.complete();
         this._unSubscriberEvents.next(true);
         this._unSubscriberEvents.complete();
     }

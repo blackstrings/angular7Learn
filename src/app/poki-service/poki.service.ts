@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Poki} from '../apis/Poki';
 import {PokiType} from '../apis/PokiType';
-import {Observable, ReplaySubject} from 'rxjs';
+import {Observable, ReplaySubject, Subject} from 'rxjs';
 
 /**
  * By providing the service at the root level, all components can access the same service instance.
@@ -18,7 +18,7 @@ export class PokiService {
     private indexCounter = 0;
 
     // subscriptions
-    private _pokiSelected: ReplaySubject<Poki> = new ReplaySubject<Poki>();
+    private _pokiSelected: Subject<Poki> = new Subject<Poki>();
     public pokiSelected: Observable<Poki> = this._pokiSelected.asObservable();
 
     constructor() {
