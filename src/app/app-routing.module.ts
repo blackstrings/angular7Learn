@@ -12,13 +12,15 @@ import {PokiAbilitiesComponent} from './poki-abilities/poki-abilities.component'
 // whenever the url changes and matches the string below
 // the component will be fired and loaded into the router-outlet in the view
 // use loadChildren vs component if the loaded view is a ngModule
+// if a component has nested router-outlet, create a children like below
 const routes: Routes = [
     {
         path: 'poki', component: PokiViewComponent,
         children: [
             {path: 'stats', component: PokiStatsComponent},
             {path: 'abilities', component: PokiAbilitiesComponent},
-            {path: 'descrption', component: PokiStatsComponent},
+            {path: 'description', component: PokiStatsComponent},
+            {path: '', redirectTo: 'stats', pathMatch: 'full'},
         ]
     },
     {path: 'pokilist', component: PokiListViewComponent},
