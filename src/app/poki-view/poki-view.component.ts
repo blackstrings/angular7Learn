@@ -3,6 +3,7 @@ import {Poki} from '../apis/Poki';
 import {PokiService} from '../poki-service/poki.service';
 import {takeUntil} from 'rxjs/operators';
 import {Observable, ReplaySubject, Subject, Subscription} from 'rxjs';
+import {ActivatedRoute, Route, Router, RouterModule} from '@angular/router';
 
 @Component({
     selector: 'app-poki-view',
@@ -18,16 +19,15 @@ export class PokiViewComponent implements OnInit, OnDestroy {
     private _unSubscriberEvents: Subject<boolean> = new Subject();
     private unSubscriberEvents: Observable<boolean> = this._unSubscriberEvents.asObservable();
 
-    constructor(private pokiService: PokiService) {
+    constructor(private pokiService: PokiService, private router: Router) {
     }
 
     ngOnInit() {
+        console.log('<< poki-view >> init');
         // subscription
         this.pokiService.pokiSelected.pipe(takeUntil(this.unSubscriberEvents)).subscribe((poki: Poki) => {
-            console.log('<< poki-view >> pokiSelected');
             this.selectedPoki = poki;
         });
-        console.log('<< PokiView >> init');
         this.pokiService.setActive();
     }
 
@@ -35,5 +35,10 @@ export class PokiViewComponent implements OnInit, OnDestroy {
         this._unSubscriberEvents.next(true);
         this._unSubscriberEvents.complete();
     }
+
+    // only when we need to display two router-outlets within one component or module
+    // navigateStats(): void {
+    //     this.router.navigate([{outlets: {primary: 'poki' , stats_ol: 'stats'}}]);
+    // }
 
 }

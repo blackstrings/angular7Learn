@@ -28,7 +28,6 @@ export class PokiSearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        // remove subscribers
         this._unSubscriberEvents.next(true);
         this._unSubscriberEvents.complete();
     }

@@ -9,7 +9,8 @@ export class Poki {
         public hp: number,
         public atk: number,
         public def: number,
-        public lvl: number
+        public lvl: number,
+        public abilities: string[]
     ) {
 
     }
