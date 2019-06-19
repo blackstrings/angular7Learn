@@ -1,9 +1,6 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {PokiViewComponent} from './poki-view/poki-view.component';
-import {PokiListViewComponent} from './poki-list-view/poki-list-view.component';
-import {PokiStatsComponent} from './poki-stats/poki-stats.component';
-import {PokiAbilitiesComponent} from './poki-abilities/poki-abilities.component';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {PokiListViewComponent} from './features/poki/poki-list-view/poki-list-view.component';
 
 // creation a routing module using cli
 // ng generate module app-routing --flat --module=app
@@ -14,15 +11,7 @@ import {PokiAbilitiesComponent} from './poki-abilities/poki-abilities.component'
 // use loadChildren vs component if the loaded view is a ngModule
 // if a component has nested router-outlet, create a children like below
 const routes: Routes = [
-    {
-        path: 'poki', component: PokiViewComponent,
-        children: [
-            {path: 'stats', component: PokiStatsComponent},
-            {path: 'abilities', component: PokiAbilitiesComponent},
-            {path: 'description', component: PokiStatsComponent},
-            {path: '', redirectTo: 'stats', pathMatch: 'full'},
-        ]
-    },
+    {path: 'poki', loadChildren: './features/poki/poki.module#PokiModule'},
     {path: 'pokilist', component: PokiListViewComponent},
     // default routing fall back when no url matches, this should be last
     {path: '', redirectTo: '/poki', pathMatch: 'full'}
@@ -30,7 +19,7 @@ const routes: Routes = [
 
 // default routing setup - this should be the only forRoot, all other router should use forChild
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules, useHash: true, enableTracing: false})],
     exports: [
         RouterModule
     ]

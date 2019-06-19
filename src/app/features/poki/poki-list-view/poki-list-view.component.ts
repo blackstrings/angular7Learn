@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PokiService} from '../poki-service/poki.service';
-import {Poki} from '../apis/Poki';
+import {Poki} from '../../../apis/Poki';
 
 @Component({
     selector: 'app-poki-list-view',

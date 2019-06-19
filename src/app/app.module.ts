@@ -1,40 +1,33 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
 
 import {AppComponent} from './app.component';
-import {MyNavComponent} from './my-nav/my-nav.component';
-import {PokiViewComponent} from './poki-view/poki-view.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FooterMainComponent} from './footer-main/footer-main.component';
 import {NavMainComponent} from './nav-main/nav-main.component';
 import {HeaderMainComponent} from './header-main/header-main.component';
-import {PokiListViewComponent} from './poki-list-view/poki-list-view.component';
-import {PokiSearchComponent} from './poki-search/poki-search.component';
-import {PokiStatsComponent} from './poki-stats/poki-stats.component';
-import { PokiAbilitiesComponent } from './poki-abilities/poki-abilities.component';
+import {PokiService} from './features/poki/poki-service/poki.service';
+import {PokiListViewComponent} from './features/poki/poki-list-view/poki-list-view.component';
 
 // declarations are for components
 // imports are for modules
 // providers are for services
 // bootstrap are for the main top level app components
 @NgModule({
-    declarations: [
-        AppComponent,
-        MyNavComponent,
-        PokiViewComponent,
-        FooterMainComponent,
-        NavMainComponent,
-        HeaderMainComponent,
-        PokiListViewComponent,
-        PokiSearchComponent,
-        PokiStatsComponent,
-        PokiAbilitiesComponent
-    ],
     imports: [
+        CommonModule,
         BrowserModule,
         AppRoutingModule
     ],
-    providers: [],
+    declarations: [
+        AppComponent,
+        FooterMainComponent,
+        NavMainComponent,
+        HeaderMainComponent,
+        PokiListViewComponent
+    ],
+    providers: [PokiService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {PokiService} from '../poki-service/poki.service';
-import {Poki} from '../apis/Poki';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {Poki} from '../../../apis/Poki';
 
 @Component({
     selector: 'app-poki-search',

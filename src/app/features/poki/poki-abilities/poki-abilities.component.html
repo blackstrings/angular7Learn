@@ -1,0 +1,5 @@
+<div *ngFor="let a of poki.abilities; let i = index">
+    <div><span class="title">{{i+1}} | </span>
+        {{a.value() | titlecase}}
+        <span class="element">({{a.elementType.value() | titlecase}})</span></div>
+</div>

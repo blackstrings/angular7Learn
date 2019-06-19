@@ -1,6 +1,8 @@
 <!-- create an alias for selectedPoki to poki for local usage here -->
-<app-my-nav></app-my-nav>
+<app-back-forward-controls></app-back-forward-controls>
 <app-poki-search></app-poki-search>
+
+<!-- this is how we can reassign a variable alias from selectedPoki to poki -->
 <div id="pokiViewContainer" class="row" *ngIf="selectedPoki; let poki">
     <div class="col-12">
         <div *ngIf="poki != null; then pokiTemplate else noPokiTemplate"></div>
@@ -28,4 +30,5 @@
     <ng-template #noPokiTemplate>
         <h1>No poki</h1>
     </ng-template>
+
 </div>

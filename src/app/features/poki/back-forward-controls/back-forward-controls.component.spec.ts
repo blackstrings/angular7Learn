@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PokiViewComponent } from './poki-view.component';
+import { BackForwardControlsComponent } from './my-nav.component';
 
-describe('PokiViewComponent', () => {
-  let component: PokiViewComponent;
-  let fixture: ComponentFixture<PokiViewComponent>;
+describe('MyNavComponent', () => {
+  let component: BackForwardControlsComponent;
+  let fixture: ComponentFixture<BackForwardControlsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokiViewComponent ]
+      declarations: [ BackForwardControlsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PokiViewComponent);
+    fixture = TestBed.createComponent(BackForwardControlsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

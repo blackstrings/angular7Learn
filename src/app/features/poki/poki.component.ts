@@ -1,16 +1,16 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Poki} from '../apis/Poki';
-import {PokiService} from '../poki-service/poki.service';
 import {takeUntil} from 'rxjs/operators';
-import {Observable, ReplaySubject, Subject, Subscription} from 'rxjs';
-import {ActivatedRoute, Route, Router, RouterModule} from '@angular/router';
+import {Observable, Subject} from 'rxjs';
+import {Router} from '@angular/router';
+import {PokiService} from './poki-service/poki.service';
+import {Poki} from '../../apis/Poki';
 
 @Component({
-    selector: 'app-poki-view',
-    templateUrl: './poki-view.component.html',
-    styleUrls: ['./poki-view.component.css']
+    selector: 'app-poki',
+    templateUrl: './poki.component.html',
+    styleUrls: ['./poki.component.css']
 })
-export class PokiViewComponent implements OnInit, OnDestroy {
+export class PokiComponent implements OnInit, OnDestroy {
 
     // contains the selected poki the view will read from
     public selectedPoki: Poki;

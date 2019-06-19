@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {PokiService} from './poki-service/poki.service';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +7,7 @@ import {PokiService} from './poki-service/poki.service';
 })
 export class AppComponent {
 
-    constructor(private pokiService: PokiService) {
+    constructor() {
 
     }
 

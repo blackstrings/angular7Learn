@@ -1,4 +1,4 @@
-span.title{
+:host span.title{
     font-weight: bold;
     margin-right: 4px;
 }
