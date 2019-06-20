@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import {PokiRoutingModule} from './poki-routing.module';
 import {PokiStatsComponent} from './poki-stats/poki-stats.component';
 import {PokiSearchComponent} from './poki-search/poki-search.component';
@@ -8,9 +8,12 @@ import {BackForwardControlsComponent} from './back-forward-controls/back-forward
 import {PokiComponent} from './poki.component';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
+import {PokiService} from './poki-service/poki.service';
+import {PokiServiceConfig} from './poki-service/PokiServiceConfig';
 
 // common module gives us NgDirectives like ngIf ngFor etc
-
+// ReactiveFormsModule for formControl
+// Notice we don't need to provide any services here
 @NgModule({
     declarations: [
         PokiStatsComponent,
@@ -26,4 +29,26 @@ import {ReactiveFormsModule} from '@angular/forms';
     ]
 })
 export class PokiModule {
+
+    // to help alert, guard and prevent the module being imported twice since this module is lazy loaded
+    constructor (@Optional() @SkipSelf() parentModule: PokiModule) {
+        if (parentModule) {
+            throw new Error('Poki is already loaded. Import it in the AppModule only');
+        }
+    }
+
+    /**
+     * When PokiModule needs the ability to pass in configuration to a service who is not providedIn: 'root'
+     * when importing PokiModule into another app module that is to be initialized with configs for certain services
+     *
+     * @param config this interface has to be created in order to pass in object literal when using forRoot
+     */
+    static forRoot(config: PokiServiceConfig): ModuleWithProviders {
+        return {
+            ngModule: PokiModule,
+            providers: [
+                PokiService, [{provide: 'config', useValue: config}]
+            ]
+        };
+    }
 }

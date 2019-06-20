@@ -1,4 +1,4 @@
-import {Injectable, Optional, SkipSelf} from '@angular/core';
+import {Inject, Inject, Injectable, Optional, SkipSelf} from '@angular/core';
 import {Observable, ReplaySubject, Subject} from 'rxjs';
 import {PokiType} from '../../../apis/PokiType';
 import {Poki} from '../../../apis/Poki';
@@ -8,6 +8,9 @@ import {AbilityType} from '../../../apis/AbilityType';
  * By providing the service at the root level, all components can access the same service instance.
  * If provided in an NgModule, only all components within that NgModule can access the same service instance.
  * If provided in a component, each component provided will instantiate its own PokiService.
+ *
+ * In angular 6.0+ the providedIn 'root' will make this a singleton service.
+ * No longer will you need to provide the service in the providers array
  */
 @Injectable({
     providedIn: 'root'
@@ -25,7 +28,7 @@ export class PokiService {
     /**
      * By passing in the service into its constructor and using optional and skipself
      * it makes the services a singleton
-     * @param singletonService
+     * @param singletonService the poki service
      */
     constructor(@Optional() @SkipSelf() private singletonService: PokiService) {
         console.log('<< poki-service >> Initiated');
