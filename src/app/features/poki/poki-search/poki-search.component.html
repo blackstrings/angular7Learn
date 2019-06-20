@@ -1,6 +1,6 @@
 <div class="row" class="padding-sm alignR">
-    <input style="border-radius: 6px; padding-left: 4px" #textInput type="text" size="1" maxlength="3"/>
-    <button type="button" class="marginL-sm btn btn-secondary fs-md" (click)="searchById(textInput.value)">
-        <i class="fas fa-search fa-lg margin-sm"></i>
-    </button>
+    <input style="border-radius: 6px; padding-left: 4px" #textInput type="text" size="1" maxlength="3" [formControl]="searchTextInput"/>
+    <!--<button type="button" class="marginL-sm btn btn-secondary fs-md" (click)="searchById(textInput.value)">-->
+        <!--<i class="fas fa-search fa-lg margin-sm"></i>-->
+    <!--</button>-->
 </div>

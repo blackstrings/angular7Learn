@@ -7,6 +7,7 @@ import {PokiAbilitiesComponent} from './poki-abilities/poki-abilities.component'
 import {BackForwardControlsComponent} from './back-forward-controls/back-forward-controls.component';
 import {PokiComponent} from './poki.component';
 import {CommonModule} from '@angular/common';
+import {ReactiveFormsModule} from '@angular/forms';
 
 // common module gives us NgDirectives like ngIf ngFor etc
 
@@ -20,7 +21,8 @@ import {CommonModule} from '@angular/common';
     ],
     imports: [
         CommonModule,
-        PokiRoutingModule
+        PokiRoutingModule,
+        ReactiveFormsModule
     ]
 })
 export class PokiModule {
