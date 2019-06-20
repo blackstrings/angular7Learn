@@ -15,6 +15,8 @@ const routes: Routes = [
     }
 ];
 
+// all ngModule to bel loaded inside a parent should always use forChild
+// ony the app-level module should use the forRoot
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]

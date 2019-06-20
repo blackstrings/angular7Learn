@@ -16,7 +16,7 @@ export class PokiListViewComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('<< PokiListView >> init');
+        console.log('<< poki-list-view >> init');
     }
 
 }

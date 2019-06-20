@@ -13,29 +13,31 @@ import {FormControl} from '@angular/forms';
 export class PokiSearchComponent implements OnInit, OnDestroy {
 
     // angulars way of accessing a dom elements in the view marked with the '#' symbol
-    @ViewChild('textInput') input: ElementRef;
-    searchTextInput = new FormControl('');
+    // @ViewChild('textInput') input: ElementRef;
+
+    /** field name should match the variable in the html */
+    private searchTextInput = new FormControl('');
 
     // for unsubscribing to subscriptions on destroy
-    private _unSubscriberEvents: Subject<boolean> = new Subject();  // subjects vs replay won't replay when reinitialize
-    private unSubscriberEvents: Observable<boolean> = this._unSubscriberEvents.asObservable();
+    private _unSub: Subject<boolean> = new Subject();  // subjects vs replay won't replay when reinitialize
+    private unSub: Observable<boolean> = this._unSub.asObservable();
 
     constructor(private pokiService: PokiService) {
 
     }
 
     ngOnInit(): void {
-        this.searchTextInput.valueChanges.pipe(takeUntil(this.unSubscriberEvents)).subscribe((val: string) => {
+        this.searchTextInput.valueChanges.pipe(takeUntil(this.unSub)).subscribe((val: string) => {
             this.searchById(val);
         });
-        this.pokiService.pokiSelected.pipe(takeUntil(this.unSubscriberEvents)).subscribe((poki: Poki) => {
+        this.pokiService.pokiSelected.pipe(takeUntil(this.unSub)).subscribe((poki: Poki) => {
             this.updateTextInput(poki);
         });
     }
 
     ngOnDestroy(): void {
-        this._unSubscriberEvents.next(true);
-        this._unSubscriberEvents.complete();
+        this._unSub.next(true);
+        this._unSub.complete();
     }
 
     private searchById(id: string): void {

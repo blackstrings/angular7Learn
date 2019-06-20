@@ -21,7 +21,7 @@ export class PokiAbilitiesComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        console.log('<< poki-abilities >> initiated');
+        console.log('<< poki-abilities >> init');
         this.poki = this.pokiService.activePoki;
         this.pokiService.pokiSelected.pipe(takeUntil(this.unSub)).subscribe((poki: Poki) => {
             this.poki = poki;
