@@ -15,7 +15,7 @@ import {PokiListViewComponent} from './features/poki/poki-list-view/poki-list-vi
 // old way of loadChildren in as a module, use the import
 //      {path: 'poki', loadChildren: () => import('./features/poki/poki.module').then(mod => mod.PokiModule)}
 const routes: Routes = [
-    {path: 'poki', loadChildren: './features/poki/poki.module#PokiModule'},
+    {path: 'poki', loadChildren: () => import('./features/poki/poki.module').then(m => m.PokiModule)},
     {path: 'pokilist', component: PokiListViewComponent},
     // default routing fall back when no url matches, this should be last
     {path: '', redirectTo: '/poki', pathMatch: 'full'}
