@@ -1,4 +1,4 @@
-import {Inject, Inject, Injectable, Optional, SkipSelf} from '@angular/core';
+import {Injectable, Optional, SkipSelf} from '@angular/core';
 import {Observable, ReplaySubject, Subject} from 'rxjs';
 import {PokiType} from '../../../apis/PokiType';
 import {Poki} from '../../../apis/Poki';
