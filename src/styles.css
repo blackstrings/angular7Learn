@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* footer sticky trick using grid layout */
+/*
 html {
     height: 100%;
 }
@@ -14,6 +15,7 @@ body {
     grid-row-end: 3;
     margin-top: 12px;
 }
+*/
 
 /* spacing styles */
 .padding-sm{padding:2px}
