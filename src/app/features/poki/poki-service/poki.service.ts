@@ -1,8 +1,10 @@
 import {Injectable, Optional, SkipSelf} from '@angular/core';
-import {Observable, ReplaySubject, Subject} from 'rxjs';
+import {Observable, pipe, ReplaySubject, Subject, throwError} from 'rxjs';
 import {PokiType} from '../../../apis/PokiType';
 import {Poki} from '../../../apis/Poki';
 import {AbilityType} from '../../../apis/AbilityType';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {catchError, map, timeout, timeoutWith} from 'rxjs/operators';
 
 /**
  * By providing the service at the root level, all components can access the same service instance.
@@ -30,7 +32,7 @@ export class PokiService {
      * it makes the services a singleton
      * @param singletonService the poki service
      */
-    constructor(@Optional() @SkipSelf() private singletonService: PokiService) {
+    constructor(@Optional() @SkipSelf() private singletonService: PokiService, public http: HttpClient) {
         console.log('<< poki-service >> Initiated');
         this.loadData();
     }
@@ -81,6 +83,46 @@ export class PokiService {
             this.indexCounter = 0;
         }
         this.setActive();
+    }
+
+    // for some reason not working yet
+    // to fully use httpClient, you have to import the module in the appModule root file of the app.
+    public getTestData(): Observable<{}>  {
+
+      console.log('getting data');
+
+      if (this.http) {
+        const uri: string = 'https://api.geekdo.com/xmlapi2/thing?id=302723';
+        // http request
+        // get setup params
+        const getHeaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+        const getOptions = {headers: getHeaders, body: null, pathParams: new HttpParams()};
+
+        // post setup params
+        const postHeaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+        const postOptions = {headers: postHeaders, body: null, pathParams: new HttpParams()};
+        const postHeadersJSON: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+        const postOptionsJSON = {headers: postHeadersJSON, body: null, pathParams: new HttpParams()};
+
+
+        return this.http.get(uri, {params: getOptions.pathParams, headers: getHeaders})
+          .pipe(
+            timeoutWith(3000, throwError('Timeout')),
+            map((response) => {
+              console.log('response returned successfully');
+              console.log(response);
+              return response;
+            }),
+            catchError(error => {
+              console.error('there was error in get');
+              return null;
+            })
+          );
+
+      } else {
+        console.error('poki service no http null');
+        return null;
+      }
     }
 
     searchById(val: string): void {

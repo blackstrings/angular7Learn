@@ -26,4 +26,8 @@ export class BackForwardControlsComponent implements OnInit, OnDestroy {
         this.pokiService.next();
     }
 
+  getData(): void {
+        this.pokiService.getTestData();
+    }
+
 }

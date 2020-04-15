@@ -10,6 +10,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {PokiService} from './poki-service/poki.service';
 import {PokiServiceConfig} from './poki-service/PokiServiceConfig';
 import {SharedModule} from '../../shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
+
+// HttpClientModule
+// to use HttpClient, you must import the module
 
 // common module gives us NgDirectives like ngIf ngFor etc
 // ReactiveFormsModule for formControl
