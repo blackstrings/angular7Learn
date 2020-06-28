@@ -9,6 +9,7 @@ import {HeaderMainComponent} from './header-main/header-main.component';
 import {PokiListViewComponent} from './features/poki/poki-list-view/poki-list-view.component';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 // import dependencies:
 // BrowserAnimationsModule - required for ngx-bootstrap
@@ -25,6 +26,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     imports: [
         SharedModule,
         BrowserModule,
+        HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule
     ],
