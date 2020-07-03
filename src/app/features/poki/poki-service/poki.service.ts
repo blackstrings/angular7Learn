@@ -23,6 +23,9 @@ export class PokiService {
     public activePoki: Poki = null;
     private indexCounter = 0;
 
+    //guard test
+    public canViewAbility: boolean = false;
+
     // subscriptions
     private _pokiSelected: Subject<Poki> = new Subject<Poki>();
     public pokiSelected: Observable<Poki> = this._pokiSelected.asObservable();
@@ -42,30 +45,41 @@ export class PokiService {
      */
     private loadData(): void {
         const data = [
-            {id: 0, name: 'Toki', avatar: 'fa-seedling', type: PokiType.FIRE, hp: 100, atk: 5, def: 5, lvl: 1,
-                abilities: [AbilityType.DASH, AbilityType.FIRE_BREATH, AbilityType.JUMP, AbilityType.NIGHTMARE]},
-            {id: 1, name: 'Bosilon', avatar: 'fa-car-side', type: PokiType.GHOST, hp: 50, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.RUN, AbilityType.NIGHTMARE, AbilityType.JUMP]},
-            {id: 2, name: 'Tricero', avatar: 'fa-share-alt', type: PokiType.ICE, hp: 100, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.FREEZE, AbilityType.JUMP, AbilityType.DASH]},
-            {id: 3, name: 'Famo', avatar: 'fa-adjust', type: PokiType.FIRE, hp: 100, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.JUMP, AbilityType.RUN]},
-            {id: 4, name: 'Elo', avatar: 'fa-angry', type: PokiType.THUNDER, hp: 100, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.SHOCK, AbilityType.RUN]},
-            {id: 5, name: 'Sno', avatar: 'fa-asterisk', type: PokiType.ICE, hp: 100, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.DASH, AbilityType.FIRE_BREATH]},
-            {id: 6, name: 'Krip', avatar: 'fa-box', type: PokiType.WATER, hp: 100, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.RUN, AbilityType.SQUIRT, AbilityType.PUNCH]},
-            {id: 7, name: 'Lank', avatar: 'fa-brain', type: PokiType.WATER, hp: 100, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.DASH, AbilityType.WATER_BLAST, AbilityType.DASH]},
-            {id: 8, name: 'Spea', avatar: 'fa-burn', type: PokiType.FIRE, hp: 100, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.JUMP, AbilityType.FIRE_BREATH, AbilityType.RUN]},
-            {id: 9, name: 'Noto', avatar: 'fa-cat', type: PokiType.GHOST, hp: 100, atk: 10, def: 5, lvl: 1,
-                abilities: [AbilityType.DASH, AbilityType.FIRE_BREATH]},
+          {id: 0, name: 'Toki', avatar: 'fa-seedling', type: PokiType.FIRE, hp: 100, atk: 5, def: 5, lvl: 1,
+            abilities: [AbilityType.DASH, AbilityType.FIRE_BREATH, AbilityType.JUMP, AbilityType.NIGHTMARE],
+            description: 'short and tall'},
+          {id: 1, name: 'Bosilon', avatar: 'fa-car-side', type: PokiType.GHOST, hp: 50, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.RUN, AbilityType.NIGHTMARE, AbilityType.JUMP],
+            description: 'short and skinny'},
+          {id: 2, name: 'Tricero', avatar: 'fa-share-alt', type: PokiType.ICE, hp: 100, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.FREEZE, AbilityType.JUMP, AbilityType.DASH],
+            description: 'shy and hard'},
+          {id: 3, name: 'Famo', avatar: 'fa-adjust', type: PokiType.FIRE, hp: 100, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.JUMP, AbilityType.RUN],
+            description: 'fast but super slow'},
+          {id: 4, name: 'Elo', avatar: 'fa-angry', type: PokiType.THUNDER, hp: 100, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.SHOCK, AbilityType.RUN],
+            description: 'scary and fast'},
+          {id: 5, name: 'Sno', avatar: 'fa-asterisk', type: PokiType.ICE, hp: 100, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.DASH, AbilityType.FIRE_BREATH],
+            description: 'lives in tall trees'},
+          {id: 6, name: 'Krip', avatar: 'fa-box', type: PokiType.WATER, hp: 100, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.RUN, AbilityType.SQUIRT, AbilityType.PUNCH],
+            description: 'prefers hard rocks'},
+          {id: 7, name: 'Lank', avatar: 'fa-brain', type: PokiType.WATER, hp: 100, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.DASH, AbilityType.WATER_BLAST, AbilityType.DASH],
+            description: 'super soft and slow'},
+          {id: 8, name: 'Spea', avatar: 'fa-burn', type: PokiType.FIRE, hp: 100, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.JUMP, AbilityType.FIRE_BREATH, AbilityType.RUN],
+            description: 'shiny and mystery'},
+          {id: 9, name: 'Noto', avatar: 'fa-cat', type: PokiType.GHOST, hp: 100, atk: 10, def: 5, lvl: 1,
+            abilities: [AbilityType.DASH, AbilityType.FIRE_BREATH],
+            description: 'playful and sad'},
         ];
         data.forEach(d => {
-            this.pokiData.push(new Poki(d.id, d.name, d.avatar, d.type, d.hp, d.atk, d.def, d.lvl, d.abilities));
+            this.pokiData.push(new Poki(d.id, d.name, d.avatar, d.type, d.hp, d.atk, d.def, d.lvl, d.abilities, d.description));
         });
+        this.canViewAbility = true; // test guard to allow abilities to be viewed
         this.activePoki = this.pokiData[0];
     }
 

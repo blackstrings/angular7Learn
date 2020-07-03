@@ -36,7 +36,7 @@ import {HttpClientModule} from '@angular/common/http';
         FooterMainComponent,
         NavMainComponent,
         HeaderMainComponent,
-        PokiListViewComponent
+        PokiListViewComponent,
     ],
     providers: [HttpClientModule],
     bootstrap: [AppComponent]

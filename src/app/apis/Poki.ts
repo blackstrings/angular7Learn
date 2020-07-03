@@ -11,7 +11,8 @@ export class Poki {
         public atk: number,
         public def: number,
         public lvl: number,
-        public abilities: AbilityType[]
+        public abilities: AbilityType[],
+        public description: string
     ) {
 
     }

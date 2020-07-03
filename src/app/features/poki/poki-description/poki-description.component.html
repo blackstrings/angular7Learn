@@ -1,0 +1,7 @@
+<ng-container *ngIf="poki else noPokiTemplate">
+  {{poki.name}} : {{poki.description}}
+</ng-container>
+
+<ng-template #noPokiTemplate>
+  <p>No poki selected</p>
+</ng-template>
