@@ -15,7 +15,8 @@ import {PokiListViewComponent} from './features/poki/poki-list-view/poki-list-vi
 // old way of loadChildren in as a module, use the import
 //      {path: 'poki', loadChildren: () => import('./features/poki/poki.module').then(mod => mod.PokiModule)}
 const routes: Routes = [
-    {path: 'poki', loadChildren: () => import('./features/poki/poki.module').then(m => m.PokiModule)},
+    // {path: 'poki', loadChildren: () => import('./features/poki/poki.module').then(m => m.PokiModule)},
+    {path: 'poki', loadChildren: './features/poki/poki.module#PokiModule'},
     {path: 'pokilist', component: PokiListViewComponent},
     // default routing fall back when no url matches, this should be last
     {path: '', redirectTo: '/poki', pathMatch: 'full'}
@@ -23,7 +24,12 @@ const routes: Routes = [
 
 // default routing setup - this should be the only forRoot, all other router should use forChild
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules, useHash: true, enableTracing: false})],
+    imports: [
+      RouterModule.forRoot(routes, {
+        preloadingStrategy: PreloadAllModules,
+        useHash: true,
+        enableTracing: false})
+    ],
     exports: [
         RouterModule
     ]

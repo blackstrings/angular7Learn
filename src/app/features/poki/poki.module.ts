@@ -11,6 +11,8 @@ import {PokiService} from './poki-service/poki.service';
 import {PokiServiceConfig} from './poki-service/PokiServiceConfig';
 import {SharedModule} from '../../shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
+import {PokiAbilityGuard} from './poki-abilities/poki-ability-guard';
+import {PokiDescriptionComponent} from './poki-description/poki-description.component';
 
 // HttpClientModule
 // to use HttpClient, you must import the module
@@ -20,11 +22,12 @@ import {HttpClientModule} from '@angular/common/http';
 // Notice we don't need to provide any services here
 @NgModule({
     declarations: [
-        PokiStatsComponent,
-        PokiSearchComponent,
-        PokiAbilitiesComponent,
-        BackForwardControlsComponent,
-        PokiComponent
+      PokiStatsComponent,
+      PokiSearchComponent,
+      PokiAbilitiesComponent,
+      PokiDescriptionComponent,
+      BackForwardControlsComponent,
+      PokiComponent
     ],
     imports: [
         SharedModule,
@@ -55,7 +58,7 @@ export class PokiModule {
         return {
             ngModule: PokiModule,
             providers: [
-                PokiService, [{provide: 'config', useValue: config}]
+                PokiService, [{provide: 'config', useValue: config}],
             ]
         };
     }
